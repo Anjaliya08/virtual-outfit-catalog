@@ -1,0 +1,76 @@
+.home-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.title {
+  font-size: 32px;
+  margin-bottom: 30px;
+  color: #222;
+}
+
+/* Filter section */
+.filter-container {
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.filter-container label {
+  font-weight: 600;
+  font-size: 16px;
+  color: #555;
+}
+
+.occasion-select {
+  padding: 8px 12px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1.5px solid #ccc;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.occasion-select:hover,
+.occasion-select:focus {
+  border-color: #3f51b5;
+  outline: none;
+}
+
+/* Grid of outfit cards */
+.outfit-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr)); /* 4 cards per row */
+  gap: 25px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Message when no results */
+.no-results {
+  font-size: 18px;
+  color: #999;
+  margin-top: 50px;
+}
+
+/* Responsive: tablets and smaller devices */
+@media (max-width: 1024px) {
+  .outfit-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .outfit-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filter-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
