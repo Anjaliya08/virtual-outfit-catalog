@@ -6,7 +6,16 @@ require("dotenv").config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors());
+// CORS middleware with specific origins allowed
+app.use(cors({
+  origin: [
+    "https://your-cloudflare-domain.com", // Replace with your actual Cloudflare domain
+    "http://localhost:3000"
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true,
+}));
+
 app.use(express.json());
 
 // Import routes
@@ -23,11 +32,9 @@ app.use("/api/cart", cartRoutes);
 app.use("/api/quiz", quizRoutes);
 app.use("/uploads", express.static("uploads"));
 
+// MongoDB connection
 mongoose
-  .connect(process.env.MONGO_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(process.env.MONGO_URL)
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.log(err));
 
